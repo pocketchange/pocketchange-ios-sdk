@@ -26,7 +26,7 @@ To use the SDK, you must make it visible to the compiler.
 Move the SDK that you downloaded in step 2 into your project's root directory. For example, if the SDK resides at /src/pocketchange-ios-sdk, and your project is located at /src/my-application, move the SDK into /src/my-application, making the SDK's new root directory /src/my-application/pocketchange-ios-sdk. Keeping the SDK inside of your project, rather than as a stand-alone folder, simplifies dependency resolution and allows different projects to easily use different versions of the SDK.
 
 ### 2. Add the SDK's /usr Directory to Your Xcode Project as a Folder Reference
-From within Xcode, open the Project Navigator and select your project. Then, from the application menu, select File » Add Files to "<your project's name>...". Locate the SDK's /usr directory, and, under the "Folders" option, choose "Create folder references for any added folders".
+From within Xcode, open the Project Navigator and select your project. Then, from the application menu, select File » Add Files to "&lt;your project's name&gt;...". Locate the SDK's /usr directory, and, under the "Folders" option, choose "Create folder references for any added folders".
 
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/sdk_import_dialog.png" alt="SDK File Import Dialog" />
 
@@ -61,7 +61,7 @@ To ensure that the linker correctly includes the SDK's code, in your project's "
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/other_linker_flags.png" alt="Other Linker Flags" />
 
 ### 7. Edit Your Application's Info.plist
-In your application's Info.plist file (typically named <application name>-Info.plist), add a row of type string whose key is "com.pocketchange.pocketchange-ios-sdk.APIKey"
+In your application's Info.plist file (typically named &lt;application name&gt;-Info.plist), add a row of type string whose key is "com.pocketchange.pocketchange-ios-sdk.APIKey"
 and whose value is the API key you obtained in step 1.
 
 If you have not already configured an appropriate display name for your application, search for "CFBundleDisplayName" in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's CFBundleDisplayName when referencing your application in user interface components.
@@ -86,7 +86,7 @@ When the SDK enqueues a notification, it posts a `PocketChangeNotificationIsPend
 [[PocketChangeSDK sharedInstance] showNotification];
 ```
 
-The `showNotification` method returns a `BOOL` indicating whether the SDK will show a notification. In certain circumstances, such as when the user lacks network connectivity, notifications may expire. Therefore, even if your application observes a `PocketChangeNotificationIsPendingNotificationNotification`, `showNotification` may not show a notification. 
+The `showNotification` method returns a `BOOL` indicating whether the SDK will show a notification. In certain circumstances, such as when the user lacks network connectivity, notifications may expire. Therefore, even if your application observes a `PocketChangeNotificationIsPendingNotification`, `showNotification` may not show a notification. 
 
 After showing a notification, the SDK posts a `PocketChangeNotificationWasShownNotification` to the default notification center. Your application should respond to this notification by pausing any expensive tasks, such as animation timers.
 
@@ -94,7 +94,7 @@ When the user dismisses a notification, the SDK posts a `PocketChangeNotificatio
 
 Visually, notifications function similarly to UIAlertViews. To aid in determining which tasks to pause upon showing a notification, you can conceive of the notification as an alert.
 
-Unlike alerts, notifications integrate with iOS 6 state saving. If the system restores your application from a saved state, the SDK will automatically restore any previously visible notification, and will eventually post a `PocketChangeNotificationWasDismissedNotification` when the user closes the notification. **When restoring a notification from a saved state, the SDK does not post a `PocketChangeNotificationWasShownNotification`**, as it posted one during the previous application cycle. Therefore, **if your application supports state restoration, you must account for any currently visible notification when restoring your user interface.** As your application's interface must already be stateful to participate in state restoration, this SDK behavior should not impose much, if any, additional burden.
+Unlike alerts, notifications integrate with iOS 6 state saving. If the system restores your application from a saved state, the SDK will automatically restore any previously visible notification, and will eventually post a `PocketChangeNotificationWasDismissedNotification` when the user closes the notification. **When restoring a notification from a saved state, the SDK does not post a `PocketChangeNotificationWasShownNotification`**, as it posted one during the previous application cycle. Therefore, **if your application supports state restoration, you must account for any currently visible notification when restoring your user interface.** As your application's interface must already serialize and restore its state to participate in state restoration, this SDK behavior should not impose much, if any, additional burden.
 
 If your account representative has enabled event-based rewards for your application, to grant a reward in response to an event, call:
 ```objective-c
@@ -102,7 +102,7 @@ NSString *rewardId = @"a reward identifier";
 [[PocketChangeSDK sharedInstance] grantReward:rewardId];
 ```
 
-with an appropriate value for rewardId.
+with an appropriate value for `rewardId`.
 
 The following skeleton application delegate demonstrates a basic SDK integration:
 
@@ -131,7 +131,7 @@ The following skeleton application delegate demonstrates a basic SDK integration
 - (void)handlePocketChangeNotification:(NSNotification *)notification
 {
     NSString *name = [notification name];
-    if ([[notification name]
+    if ([name
          isEqualToString:PocketChangeNotificationIsPendingNotification]) {
         [[PocketChangeSDK sharedInstance] showNotification];
     } else if ([name
@@ -161,7 +161,7 @@ and whose value is YES.
 To trigger additional daily gift grants in sandbox mode, you can either restart your application, or execute:
 ```objective-c
 [[PocketChangeSDK sharedInstance] grantReward:@"daily"];
-``` or restart your application.
+```
 
 **You must disable sandbox mode before submiting your application to the App Store, or users will not receive real rewards.**
 

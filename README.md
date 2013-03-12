@@ -2,6 +2,8 @@
 
 Follow the instructions below to integrate the SDK.
 
+Compatibility: iOS 4.3+.
+
 Prerequisites: [Xcode][1].
 
 ## Step 1: Obtain an API Key for Your Application

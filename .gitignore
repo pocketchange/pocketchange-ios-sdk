@@ -1,4 +1,2 @@
 .DS_Store
-project.xcworkspace/xcuserdata/*
-xcuserdata/*
-*.ipa
+*.swp

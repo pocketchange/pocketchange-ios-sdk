@@ -98,14 +98,6 @@ Visually, notifications function similarly to UIAlertViews. To aid in determinin
 
 Unlike alerts, notifications integrate with iOS 6 state saving. If the system restores your application from a saved state, the SDK will automatically restore any previously visible notification, and will eventually post a `PocketChangeNotificationWasDismissedNotification` when the user closes the notification. **When restoring a notification from a saved state, the SDK does not post a `PocketChangeNotificationWasShownNotification`**, as it posted one during the previous application cycle. Therefore, **if your application supports state restoration, you must account for any currently visible notification when restoring your user interface.** As your application's interface must already serialize and restore its state to participate in state restoration, this SDK behavior should not impose much, if any, additional burden.
 
-If your account representative has enabled event-based rewards for your application, to grant a reward in response to an event, call:
-```objective-c
-NSString *rewardId = @"a reward identifier";
-[[PocketChangeSDK sharedInstance] grantReward:rewardId];
-```
-
-with an appropriate value for `rewardId`.
-
 The following skeleton application delegate demonstrates a basic SDK integration:
 
 ```objective-c
@@ -155,6 +147,18 @@ The following skeleton application delegate demonstrates a basic SDK integration
     // resume timers and other expensive UI tasks
 }
 ```
+
+## Step 5 (Optional): Integrate Event Rewards
+
+If you've set up event-based rewards with your account representative, you can grant a reward in response to an event using:
+```objective-c
+NSString *rewardId = @"a reward identifier";
+[[PocketChangeSDK sharedInstance] grantReward:rewardId];
+```
+
+the rewardId is the referenceId you received from your account representive for the event in question. 
+
+**Please Note that test mode must be enabled for custom events to fire**
 
 ## <a name="testing">Testing
 You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. To enable sandbox mode, in your application's Info.plist file, add a row of type boolean whose key is "com.pocketchange.pocketchange-ios-sdk.sandboxMode"

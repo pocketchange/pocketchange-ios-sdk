@@ -6,6 +6,9 @@ Compatibility: iOS 4.3+.
 
 Prerequisites: [Xcode][1].
 
+**After you finish testing please submit your .ipa file to your iOS representative for QA with test mode enabled.**
+
+
 ## Step 1: Obtain an API Key for Your Application
 
 In order to integrate the Pocket Change SDK, you must first obtain an API Key. To locate your application's API key, select your application from the dashboard, then navigate to Settings » Keys » API Key. Each application has a different API key; if you have multiple applications, be sure to use the correct key for each one.

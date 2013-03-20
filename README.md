@@ -88,7 +88,11 @@ When the SDK enqueues a notification, it posts a `PocketChangeNotificationIsPend
 [[PocketChangeSDK sharedInstance] showNotification];
 ```
 
+As the showNotification method interacts with the user interface, you must invoke it on the main thread. **All methods in the PocketChangeSDK class must be invoked on the main thread.** The SDK posts its notifications from the main thread, so your observers will be invoked on the main thread unless you alter the default invocation context by providing a custom operation queue.
+
 The `showNotification` method returns a `BOOL` indicating whether the SDK will show a notification. In certain circumstances, such as when the user lacks network connectivity, notifications may expire. Therefore, even if your application observes a `PocketChangeNotificationIsPendingNotification`, `showNotification` may not show a notification. 
+
+If your application cannot synchronously respond to the `PocketChangeNotificationIsPendingNotification`, consider invoking the `showNotification` method periodically at natural transition points in your application's workflow.
 
 After showing a notification, the SDK posts a `PocketChangeNotificationWasShownNotification` to the default notification center. Your application should respond to this notification by pausing any expensive tasks, such as animation timers.
 

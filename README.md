@@ -165,7 +165,7 @@ NSString *rewardId = @"a reward identifier";
 
 the rewardId is the referenceId you received from your account representive for the event in question. 
 
-**Please Note that test mode must be enabled for custom events to fire**
+**Your application must be in <a href="#testing">sandbox mode</a> to test event-based rewards.**
 
 ## <a name="testing">Testing
 You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. To enable sandbox mode, in your application's Info.plist file, add a row of type boolean whose key is "com.pocketchange.pocketchange-ios-sdk.sandboxMode"

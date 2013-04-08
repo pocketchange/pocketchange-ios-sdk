@@ -29,6 +29,7 @@ To use the SDK, you must make it visible to the compiler.
 
 ### 1. Add the SDK to your project
 Drag the `PocketChangeSDK` folder over to your XCode Project.
+
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-1.png" alt="Dragging SDK Over" />
 
 When the file import dialog comes up, select "Copy items into destination group's folder", "Create groups for any added folders", and check off whichever targets you want to add the PocketChangeSDK to.

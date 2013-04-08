@@ -61,7 +61,7 @@ Since AdSupport.framework is for iOS 6+, mark it as optional to allow your app t
 
 ### 4. Verify the library search path
 
-Your library search path should have an entry like `"$(SRCROOT)/PocketChangeSDK"` that XCode automatically added. If not, go ahead and it.
+Your library search path should have an entry like `"$(SRCROOT)/PocketChangeSDK"` that XCode automatically added. If not, go ahead and add it.
 
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-6.png" alt="Library search paths" />
 

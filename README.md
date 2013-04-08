@@ -27,54 +27,58 @@ Or download and extract the files here: <http://github.com/pocketchange/pocketch
 
 To use the SDK, you must make it visible to the compiler.
 
-### 1. Move the SDK to Your Project's Root Directory
-Move the SDK that you downloaded in step 2 into your project's root directory. For example, if the SDK resides at /src/pocketchange-ios-sdk, and your project is located at /src/my-application, move the SDK into /src/my-application, making the SDK's new root directory /src/my-application/pocketchange-ios-sdk. Keeping the SDK inside of your project, rather than as a stand-alone folder, simplifies dependency resolution and allows different projects to easily use different versions of the SDK.
+### 1. Add the SDK to your project
+Drag the `PocketChangeSDK` folder over to your XCode Project.
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-1.png" alt="Dragging SDK Over" />
 
-### 2. Add the SDK's /usr Directory to Your Xcode Project as a Folder Reference
-From within Xcode, open the Project Navigator and select your project. Then, from the application menu, select File » Add Files to "&lt;your project's name&gt;...". Locate the SDK's /usr directory, and, under the "Folders" option, choose "Create folder references for any added folders".
+When the file import dialog comes up, select "Copy items into destination group's folder", "Create groups for any added folders", and check off whichever targets you want to add the PocketChangeSDK to.
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-2.png" alt="Import file dialog" />
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/sdk_import_dialog.png" alt="SDK File Import Dialog" />
+### 2. Verify that the SDK library has been linked to your application's target
 
-After you've imported the /usr directory, the Project Navigator for your project should look similar to the following:
+Make sure that `libPocketChangeSDK.a` is among the linked binaries.
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/project_structure_after_sdk_import.png" alt="Project Structure after Importing the SDK" />
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-3.png" alt="Initial linked binaries" />
 
-### 3. Link the SDK Library to Your Application's Target
-From the Project Navigator, select your application under "Targets". Then, under "Build Phases", expand the "Link Binary with Libraries" phase and add the libpocketchange-ios-sdk.a library by dragging libpocketchange-ios-sdk.a from the usr/lib folder in the Project Navigator into the build phase, producing a configuration similar to the following:
+### 3. Add the SDK Framework Dependencies
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/link_sdk_library.png" alt="Link Phase after Adding the SDK library" />
+The SDK depends on multiple external frameworks. To incorporate these frameworks into the project, under the "Link Binary with Libraries" phase, add the following frameworks if they have not already been added (and `libPocketChangeSDK.a` if it wasn't among the frameworks in the previous step):
 
-### 4. Add the SDK Library's Framework Dependencies
-The SDK depends on multiple external frameworks. To incorporate these frameworks into your project, under the "Link Binary with Libraries" build phase, click the "+" symbol and add the following frameworks: AdSupport.framework, CoreData.framework, CoreTelephony.framework, QuartzCore.framework, Security.framework, and SystemConfiguration.framework.
+  * AdSupport.framework
+  * CoreData.framework
+  * CoreGraphics.framework
+  * CoreTelephony.framework
+  * QuartzCore.framework
+  * Security.framework
+  * SystemConfiguration.framework
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/link_frameworks_dialog.png" alt="Link Frameworks Dialog" />
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-4.png" alt="Adding the frameworks dialog" />
 
-As the AdSupport framework requires iOS 6, mark it as optional. The SDK automatically adjusts its behavior to function on devices which cannot use this framework. After you've imported all of the relevant dependencies, your "Link Binary with Libraries" build phase should include all of the following entries exactly (though it may contain additional entries):
+Since AdSupport.framework is for iOS 6+, mark it as optional to allow your app to work on previous versions of iOS. The SDK automatically adjusts its behavior to function on devices which cannot use this framework.
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/completed_link_phase.png" alt="Link Phase after Adding All Required Frameworks and Libraries" />
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-5.png" alt="Link Phase after adding all required frameworks and libraries" />
 
-### 5. Add the SDK's Headers to Your Search Paths
-In your project configuration, select the "Build Settings" tab and search for "paths". You should see an entry under Search Paths » Header Search Paths. Add the following path (including quotes) to "Header Search Paths": "$(SRCROOT)/pocketchange-ios-sdk/usr/include".
+### 4. Verify the library search path
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/header_search_paths.png" alt="Header Search Paths" />
+Your library search path should have an entry like `"$(SRCROOT)/PocketChangeSDK"` that XCode automatically added. If not, go ahead and it.
 
-### 6. Update Your Project's Linker Flags
-To ensure that the linker correctly includes the SDK's code, in your project's "Build Settings" tab, search for "other_ld", and you should see an entry under Linking » Other Linker Flags. Add the following flags to "Other Linker Flags":
-* -force_load "$(SRCROOT)/pocketchange-ios-sdk/usr/lib/libpocketchange-ios-sdk.a" 
-* -ObjC
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-6.png" alt="Library search paths" />
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/other_linker_flags.png" alt="Other Linker Flags" />
+### 5. Update Your Project's Linker Flags
+To ensure that the linker correctly includes the SDK's code, in your project's "Build Settings" tab, search for "other_ld", and you should see an entry under Linking » Other Linker Flags. Add the following flag to "Other Linker Flags":
+  * `-ObjC`
 
-### 7. Edit Your Application's Info.plist
-In your application's Info.plist file (typically named &lt;application name&gt;-Info.plist), add a row of type string whose key is "com.pocketchange.pocketchange-ios-sdk.APIKey"
-and whose value is the API key you obtained in step 1.
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-7.png" alt="Other Linker Flags" />
 
-If you have not already configured an appropriate display name for your application, search for "CFBundleDisplayName" in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's CFBundleDisplayName when referencing your application in user interface components.
+### 6. Edit Your Application's Info.plist
+In your application's Info.plist file (typically named `<application name>-Info.plist`), add a row of type string whose key is `com.pocketchange.pocketchange-ios-sdk.APIKey` and whose value is the API key you obtained in step 1.
+
+If you have not already configured an appropriate display name for your application, search for `CFBundleDisplayName` in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's `CFBundleDisplayName` when referencing your application in user interface components.
 
 ## Step 4: Integrate the SDK into Your Application
-In your application delegate, import the pocketchange-ios-sdk/PocketChangeSDK.h header: 
+In your application delegate, import the `PocketChangeSDK.h` header: 
 ```objective-c
-#import <pocketchange-ios-sdk/PocketChangeSDK.h>
+#import "PocketChangeSDK.h"
 ```
 
 In your delegate's application:didFinishLaunchingWithOptions: method, call:

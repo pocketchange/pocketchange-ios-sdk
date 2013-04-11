@@ -173,8 +173,12 @@ the rewardId is the referenceId you received from your account representive for 
 **Your application must be in <a href="#testing">sandbox mode</a> to test event-based rewards.**
 
 ## Testing
-You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. To enable sandbox mode, in your application's Info.plist file, add a row of type boolean whose key is "com.pocketchange.pocketchange-ios-sdk.sandboxMode"
-and whose value is YES.
+You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. 
+
+To enable sandbox mode, in your application's Info.plist file, add a row of type boolean whose key is "com.pocketchange.pocketchange-ios-sdk.sandboxMode"
+and whose value is YES. See example below.
+
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/test_mode.png" alt="Enabling Test Mode" />
 
 To trigger additional daily gift grants in sandbox mode, you can either restart your application, or execute:
 ```objective-c

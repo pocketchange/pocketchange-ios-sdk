@@ -172,6 +172,42 @@ the rewardId is the referenceId you received from your account representive for 
 
 **Your application must be in <a href="#testing">sandbox mode</a> to test event-based rewards.**
 
+## Step 6 (Optional): Added a Pocket Change Shop button
+
+SDK version 1.0.5 adds the ability to open the shop from any point within your app, without having to wait for a notification to display. To integrate, check the `canOpenShop` property in the PocketChangeSDK instance and, if it returns `YES`, you may call `-(void)openShop`.
+
+The value of `canOpenShop` can change at any point and is initially set to `NO`, so you should set up your application to observe `PocketChangeShopAvailabilityChangedNotification` and respond to it (e.g., add/remove a "Shop" button as needed). For example:
+
+```objective-c
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpPocketChangeButton) name:PocketChangeShopAvailabilityChangedNotification object:nil];
+
+    ...
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PocketChangeShopAvailabilityChangedNotification object:nil];
+
+    ...
+}
+
+- (void)setUpPocketChangeButton
+{
+    if ([[PocketChangeSDK sharedInstance] canOpenShop]) {
+        // Add shop button
+    }
+    else {
+        // Remove shop button
+    }
+}
+```
+
 ## Testing
 You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. 
 

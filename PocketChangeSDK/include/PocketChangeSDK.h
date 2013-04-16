@@ -11,6 +11,8 @@
 #define _POCKET_CHANGE_SDK_H_
 
 OBJC_EXPORT NSString * const PocketChangeSDKVersion;
+OBJC_EXPORT NSString * const PocketChangeSDKReadyNotification;
+OBJC_EXPORT NSString * const PocketChangeShopAvailabilityChangedNotification;
 OBJC_EXPORT NSString * const PocketChangeRewardGrantedNotification;
 OBJC_EXPORT NSString * const PocketChangeRewardGrantedNotificationKeyGrantedRewardIDs;
 OBJC_EXPORT NSString * const PocketChangeNotificationIsPendingNotification;
@@ -19,11 +21,15 @@ OBJC_EXPORT NSString * const PocketChangeNotificationWasDismissedNotification;
 
 @interface PocketChangeSDK : NSObject
 
+@property (nonatomic, readonly) BOOL canOpenShop;
+
 - (void)applicationDidFinishLaunching;
 - (void)grantReward:(NSString *)rewardId;
 - (void)grantReward:(NSString *)rewardId amount:(NSUInteger)amount;
 - (BOOL)hasPendingNotification;
 - (BOOL)showNotification;
+
+- (void)openShop;
 
 + (PocketChangeSDK *)sharedInstance;
 

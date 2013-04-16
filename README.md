@@ -183,7 +183,10 @@ The value of `canOpenShop` can change at any point and is initially set to `NO`,
 {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpPocketChangeButton) name:PocketChangeShopAvailabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(setUpPocketChangeButton) 
+                                                 name:PocketChangeShopAvailabilityChangedNotification 
+                                               object:nil];
 
     ...
 }
@@ -192,7 +195,9 @@ The value of `canOpenShop` can change at any point and is initially set to `NO`,
 {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PocketChangeShopAvailabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:PocketChangeShopAvailabilityChangedNotification
+                                                  object:nil];
 
     ...
 }

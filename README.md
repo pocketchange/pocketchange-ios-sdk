@@ -228,4 +228,40 @@ To trigger additional daily gift grants in sandbox mode, you can either restart 
 
 **You must disable sandbox mode before submiting your application to the App Store, or users will not receive real rewards.**
 
+
+## Notes and Known Issues
+
+### Keyboard orientation in landscape apps
+
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_orientation.png" alt="Incorrectly oriented UIKeyboard" />
+
+If the keyboard is not orienting itself correctly in a landscape-only app, then check that `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) is in the `Supported interface orientations` in your application's `info.plist`. 
+
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_info_plist.png" alt="Modified info.plist to allow differente keyboard orientations" />
+
+If you are concerned that this will affect the orientation of your app's view controllers, make sure to add `Portrait (bottom home button)` to the _end_ of the `Supported interface orientations` array and to add this code to view controllers you want to appear only in landscape:
+
+```
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return ((toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
+            (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight));
+}
+```
+
+If your app's view controllers are inside a `UINavigationController` you will have to add the previous code to a subclass of the `UINavigationController` instead. This is similar to the requirements for a landscape-only app using [Apple's Game Center][2] (also see [this Stack Overflow question][3]).
+
+
 [1]: https://developer.apple.com/xcode/
+[2]: https://developer.apple.com/library/ios/#releasenotes/General/RN-iOSSDK-6_0/index.html#//apple_ref/doc/uid/TP40012166-CH1-SW20
+[3]: http://stackoverflow.com/questions/12488838/game-center-login-lock-in-landscape-only-in-i-os-6

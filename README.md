@@ -76,6 +76,8 @@ In your application's Info.plist file (typically named `<application name>-Info.
 
 If you have not already configured an appropriate display name for your application, search for `CFBundleDisplayName` in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's `CFBundleDisplayName` when referencing your application in user interface components.
 
+Also, _**make sure**_ that your application's Info.plist lists Portrait as one of the _Supported Interface Orientations_. For more information see the known issue [Keyboard Orientation in Landscape Apps](#keyboard-orientation-in-landscape-apps).
+
 ## Step 4: Integrate the SDK into Your Application
 In your application delegate, import the `PocketChangeSDK.h` header: 
 ```objective-c

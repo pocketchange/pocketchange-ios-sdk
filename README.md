@@ -235,7 +235,7 @@ To trigger additional daily gift grants in sandbox mode, you can either restart 
 
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_orientation.png" alt="Incorrectly oriented UIKeyboard" />
 
-If the keyboard is not orienting itself correctly in a landscape-only app, then check that `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) is in the `Supported interface orientations` in your application's `info.plist`. 
+If the keyboard is not orienting itself correctly in a landscape-only app, then check that `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) is in the `Supported interface orientations` of your application's `Info.plist`. 
 
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_info_plist.png" alt="Modified info.plist to allow differente keyboard orientations" />
 

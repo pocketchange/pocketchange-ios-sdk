@@ -216,6 +216,8 @@ The value of `canOpenShop` can change at any point and is initially set to `NO`,
 }
 ```
 
+There is button artwork that you may use for buttons to open the Pocket Change Store in your app available <a href="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/button_artwork.png">here</a>.
+
 ## Testing
 You can use sandbox mode to help validate your integration: In sandbox mode, the SDK grants unlimited rewards so that you can confirm your application's behavior after a reward has been granted. 
 

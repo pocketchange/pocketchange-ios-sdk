@@ -174,7 +174,7 @@ the rewardId is the referenceId you received from your account representive for 
 
 **Your application must be in <a href="#testing">sandbox mode</a> to test event-based rewards.**
 
-## Step 6 (Optional): Added a Pocket Change Shop button
+## Step 6 (Optional): Adding a Pocket Change Shop button
 
 SDK version 1.0.5 adds the ability to open the shop from any point within your app, without having to wait for a notification to display. To integrate, check the `canOpenShop` property in the PocketChangeSDK instance and, if it returns `YES`, you may call `-(void)openShop`.
 
@@ -189,6 +189,7 @@ The value of `canOpenShop` can change at any point and is initially set to `NO`,
                                              selector:@selector(setUpPocketChangeButton) 
                                                  name:PocketChangeShopAvailabilityChangedNotification 
                                                object:nil];
+    [self setUpPocketChangeButton]; // Call initially in case [[PocketChangeSDK sharedInstance] canOpenShop] is already YES
 
     ...
 }

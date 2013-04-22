@@ -6,3 +6,7 @@
 
   * Rewards notificaton now uses native iOS views
   * Added `-(void)openShop` method
+
+## v1.0.5 (2013-04-22)
+
+  * Removed some unnecessary copying of variables

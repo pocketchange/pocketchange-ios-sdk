@@ -11,7 +11,7 @@
 
   * Removed some unnecessary copying of variables
 
-## v1.0.5 (2013-05-13)
+## v1.0.7 (2013-05-13)
 
   * Fixed the repeat reward notifications bug
   * Fixed two rare crashes on certain devices

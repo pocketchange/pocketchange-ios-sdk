@@ -7,7 +7,7 @@
   * Rewards notificaton now uses native iOS views
   * Added `-(void)openShop` method
 
-## v1.0.5 (2013-04-22)
+## v1.0.6 (2013-04-22)
 
   * Removed some unnecessary copying of variables
 
@@ -15,3 +15,7 @@
 
   * Fixed the repeat reward notifications bug
   * Fixed two rare crashes on certain devices
+
+## v1.0.8 (2013-05-20)
+
+  * Notifications no longer have the dark background

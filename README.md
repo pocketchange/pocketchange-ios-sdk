@@ -1,4 +1,4 @@
-# Pocket Change's iOS SDK
+# Pocket Change iOS SDK
 
 Follow the instructions below to integrate the SDK.
 
@@ -162,15 +162,15 @@ The following skeleton application delegate demonstrates a basic SDK integration
 }
 ```
 
-## Step 5 (Optional): Integrate Event Rewards
+## Step 5: Integrate Event Rewards
 
-If you've set up event-based rewards with your account representative, you can grant a reward in response to an event using:
+Once you've set up event-based rewards with your account representative, you can grant a reward in response to an event using:
+
 ```objective-c
 NSString *rewardId = @"a reward identifier";
 [[PocketChangeSDK sharedInstance] grantReward:rewardId];
 ```
-
-the rewardId is the referenceId you received from your account representive for the event in question. 
+The rewardId for each event-based reward is included with the setup information you received from your account representive. 
 
 **Your application must be in <a href="#testing">sandbox mode</a> to test event-based rewards.**
 

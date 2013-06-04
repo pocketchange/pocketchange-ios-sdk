@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'PocketChangeSDK'
-  s.version  = '1.0.8'
+  s.version  = '1.0.9'
   s.license  = {
     :type => 'Commercial',
     :text => <<-LICENSE
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.summary  = 'Pocket Change SDK for universal in-app rewards.'
   s.homepage = 'https://pocketchange.com'
   s.author   = { 'Pocket Change' => 'contact@pocketchange.com' }
-  s.source   = { :http => 'https://github.com/pocketchange/pocketchange-ios-sdk/archive/v1.0.8.zip' }
+  s.source   = { :http => 'https://github.com/pocketchange/pocketchange-ios-sdk/archive/v1.0.9.zip' }
   s.platform = :ios
   s.ios.deployment_target = '4.3'
   s.source_files = 'pocketchange-ios-sdk-*/PocketChangeSDK/include/*.h'
@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
   s.framework = 'UIKit', 'CoreData', 'CoreTelephony', 'QuartzCore', 'Security', 'SystemConfiguration', 'CoreGraphics'
   s.weak_frameworks = 'AdSupport'
   s.libraries = 'PocketChangeSDK'
-  s.xcconfig  =  { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/PocketChangeSDK/pocketchange-ios-sdk-1.0.8/PocketChangeSDK"' }
+  s.xcconfig  =  { 'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/PocketChangeSDK/pocketchange-ios-sdk-1.0.9/PocketChangeSDK"' }
 end

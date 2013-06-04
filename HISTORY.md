@@ -19,3 +19,7 @@
 ## v1.0.8 (2013-05-20)
 
   * Notifications no longer have the dark background
+
+## v1.0.9 (2013-06-04)
+
+  * Fixed a potential crash on iOS 4

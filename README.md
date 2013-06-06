@@ -15,6 +15,8 @@ In order to integrate the Pocket Change SDK, you must first obtain an API Key. T
 
 ## Step 2: Download the SDK
 
+If you are using [CocoaPods](http://cocoapods.org), just add the line `pod 'PocketChangeSDK', '~> 1.0'` to your Podfile and skip to [Step 4](#step-4-integrate-the-sdk-into-your-application). Otherwise, continue below.
+
 You can either clone the GitHub repository:
 
 ```sh
@@ -71,14 +73,18 @@ To ensure that the linker correctly includes the SDK's code, in your project's "
 
 <img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/step3-7.png" alt="Other Linker Flags" />
 
-### 6. Edit Your Application's Info.plist
+
+## Step 4: Integrate the SDK into Your Application
+
+### 1. Edit Your Application's Info.plist
 In your application's Info.plist file (typically named `<application name>-Info.plist`), add a row of type string whose key is `com.pocketchange.pocketchange-ios-sdk.APIKey` and whose value is the API key you obtained in step 1.
 
 If you have not already configured an appropriate display name for your application, search for `CFBundleDisplayName` in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's `CFBundleDisplayName` when referencing your application in user interface components.
 
 Also, _**make sure**_ that your application's Info.plist lists Portrait as one of the _Supported Interface Orientations_. For more information see the known issue [Keyboard Orientation in Landscape Apps](#keyboard-orientation-in-landscape-apps).
 
-## Step 4: Integrate the SDK into Your Application
+### 2. Add the Pocket Change SDK method calls
+
 In your application delegate, import the `PocketChangeSDK.h` header: 
 ```objective-c
 #import "PocketChangeSDK.h"
@@ -246,7 +252,7 @@ If the keyboard is not orienting itself correctly in a landscape-only app, then 
 
 If you are concerned that this will affect the orientation of your app's view controllers, make sure to add `Portrait (bottom home button)` to the _end_ of the `Supported interface orientations` array and to add this code to view controllers you want to appear only in landscape:
 
-```
+```objective-c
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscape;

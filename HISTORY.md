@@ -23,3 +23,8 @@
 ## v1.0.9 (2013-06-04)
 
   * Fixed a potential crash on iOS 4
+
+## v1.0.10 (2013-06-20)
+
+  * New opt-in flow
+  * Fixed a possible bug where a notification would still be pending after a user had visited the store

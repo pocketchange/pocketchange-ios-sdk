@@ -242,13 +242,9 @@ To trigger additional daily gift grants in sandbox mode, you can either restart 
 
 ## Notes and Known Issues
 
-### Keyboard orientation in landscape apps
+### Crash in iOS 6 when opening the Pocket Change Store in landscape-only apps
 
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_orientation.png" alt="Incorrectly oriented UIKeyboard" />
-
-If the keyboard is not orienting itself correctly in a landscape-only app, then check that `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) is in the `Supported interface orientations` of your application's `Info.plist`. 
-
-<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_info_plist.png" alt="Modified info.plist to allow differente keyboard orientations" />
+If there is an exception when opening the Pocket Change Store with the message _Supported orientations has no common orientation with the application, and shouldAutorotate is returning YES_, then you need to add `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) to the `Supported interface orientations` of your application's `Info.plist`. 
 
 If you are concerned that this will affect the orientation of your app's view controllers, make sure to add `Portrait (bottom home button)` to the _end_ of the `Supported interface orientations` array and to add this code to view controllers you want to appear only in landscape:
 
@@ -271,7 +267,6 @@ If you are concerned that this will affect the orientation of your app's view co
 ```
 
 If your app's view controllers are inside a `UINavigationController` you will have to add the previous code to a subclass of the `UINavigationController` instead. This is similar to the requirements for a landscape-only app using [Apple's Game Center][2] (also see [this Stack Overflow question][3]).
-
 
 [1]: https://developer.apple.com/xcode/
 [2]: https://developer.apple.com/library/ios/#releasenotes/General/RN-iOSSDK-6_0/index.html#//apple_ref/doc/uid/TP40012166-CH1-SW20

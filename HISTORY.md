@@ -28,3 +28,8 @@
 
   * New opt-in flow
   * Fixed a possible bug where a notification would still be pending after a user had visited the store
+
+## v1.0.11 (2013-06-28)
+
+  * Fixed a bug present only in sandbox mode that affected buttons in the reward dialog
+  * Fixed the keyboard orientation bug across all iOS versions

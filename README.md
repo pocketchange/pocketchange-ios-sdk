@@ -81,7 +81,7 @@ In your application's Info.plist file (typically named `<application name>-Info.
 
 If you have not already configured an appropriate display name for your application, search for `CFBundleDisplayName` in your plist file and change the value in the highlighted row to an appropriate user-facing name. The SDK uses your application's `CFBundleDisplayName` when referencing your application in user interface components.
 
-Also, _**make sure**_ that your application's Info.plist lists Portrait as one of the _Supported Interface Orientations_. For more information see the known issue [Keyboard Orientation in Landscape Apps](#keyboard-orientation-in-landscape-apps).
+Also, _**make sure**_ that your application's Info.plist lists Portrait as one of the _Supported Interface Orientations_. For more information see the known issue [Keyboard Orientation in Landscape Apps](#crash-in-ios-6-when-opening-the-pocket-change-store-in-landscape-only-apps).
 
 ### 2. Add the Pocket Change SDK method calls
 
@@ -246,7 +246,9 @@ To trigger additional daily gift grants in sandbox mode, you can either restart 
 
 If there is an exception when opening the Pocket Change Store with the message _Supported orientations has no common orientation with the application, and shouldAutorotate is returning YES_, then you need to add `Portrait (bottom home button)` (`UIInterfaceOrientationPortrait`) to the `Supported interface orientations` of your application's `Info.plist`. 
 
-If you are concerned that this will affect the orientation of your app's view controllers, make sure to add `Portrait (bottom home button)` to the _end_ of the `Supported interface orientations` array and to add this code to view controllers you want to appear only in landscape:
+<img src="https://raw.github.com/pocketchange/pocketchange-ios-sdk/master/docs/images/keyboard_info_plist.png" alt="Modified info.plist to allow differente keyboard orientations" />
+
+If you are concerned that this will affect the orientation of your app's view controllers, make sure to add `Portrait (bottom home button)` to the _end_ of the `Supported interface orientations` array and to add this code to view controllers you want to appear in landscape only:
 
 ```objective-c
 - (NSUInteger)supportedInterfaceOrientations

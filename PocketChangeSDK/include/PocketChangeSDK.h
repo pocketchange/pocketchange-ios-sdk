@@ -28,8 +28,9 @@ OBJC_EXPORT NSString * const PocketChangeNotificationWasDismissedNotification;
 - (void)grantReward:(NSString *)rewardId amount:(NSUInteger)amount;
 - (BOOL)hasPendingNotification;
 - (BOOL)showNotification;
+- (BOOL)showNotification:(BOOL)shouldRateLimit;
 
-- (void)openShop;
+- (BOOL)openShop;
 
 + (PocketChangeSDK *)sharedInstance;
 

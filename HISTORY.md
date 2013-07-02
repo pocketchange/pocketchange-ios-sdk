@@ -33,3 +33,8 @@
 
   * Fixed a bug present only in sandbox mode that affected buttons in the reward dialog
   * Fixed the keyboard orientation bug across all iOS versions
+
+## v1.1.0 (2013-07-02)
+
+  * The openShop method now returns a boolean indicating whether the shop was opened successfully
+  * Added a showNotification: method that takes a boolean indicating whether to rate limit consecutive notifications (default is YES)

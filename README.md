@@ -6,7 +6,7 @@ Compatibility: iOS 4.3+.
 
 Prerequisites: [Xcode][1].
 
-**After you finish testing please submit your .ipa file to your iOS representative for QA with test mode enabled.**
+**After you finish testing please submit your .ipa file to your iOS representative for QA with test mode enabled. You DO NOT need to add our UDID to your app's provisioning profile**
 
 
 ## Step 1: Obtain an API Key for Your Application

@@ -38,3 +38,8 @@
 
   * The openShop method now returns a boolean indicating whether the shop was opened successfully
   * Added a showNotification: method that takes a boolean indicating whether to rate limit consecutive notifications (default is YES)
+
+## v1.2.0 (2013-08-27)
+
+  * Various minor bug fixes
+  * Can now verify in-app purchases and reward appropriately

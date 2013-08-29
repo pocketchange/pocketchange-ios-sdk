@@ -43,3 +43,7 @@
 
   * Various minor bug fixes
   * Can now verify in-app purchases and reward appropriately
+
+## v1.2.1 (2013-08-29)
+
+  * Added better debugging capabilities

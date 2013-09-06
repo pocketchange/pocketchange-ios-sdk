@@ -47,3 +47,7 @@
 ## v1.2.1 (2013-08-29)
 
   * Added better debugging capabilities
+
+## v1.2.2 (2013-09-05)
+
+  * Fixed a potential crash in CoreData when repeatedly opting out, then opting in without closing the app
